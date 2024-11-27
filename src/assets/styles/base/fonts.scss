@@ -1,0 +1,19 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Consola Mono';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url('../fonts/ConsolaMonoBook.woff2') format('woff2'),
+    url('../fonts/ConsolaMonoBook.woff') format('woff');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Consola Mono';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    url('../fonts/ConsolaMonoBold.woff2') format('woff2'),
+    url('../fonts/ConsolaMonoBold.woff') format('woff');
+}

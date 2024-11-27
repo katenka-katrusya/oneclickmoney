@@ -1,0 +1,13 @@
+.btn {
+  width: 100%;
+  padding: 10px 10px 15px 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: #fff;
+  background: #000;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background: #fe303f;
+  }
+}

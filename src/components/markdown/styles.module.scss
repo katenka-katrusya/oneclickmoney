@@ -1,0 +1,83 @@
+.markdown {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000;
+
+  h1 {
+    font-size: 64px;
+    margin-bottom: 0.83em;
+    font-weight: bold;
+
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+
+  h2 {
+    font-size: 48px;
+    margin-bottom: 0.67em;
+    font-weight: bold;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  h3 {
+    font-size: 32px;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  p {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  ul, ol {
+    display: block;
+    padding-inline-start: 30px;
+    padding-inline-end: 0;
+    margin-bottom: 15px;
+  }
+
+  li {
+    list-style: outside disc;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &_custom {
+    ul {
+      li {
+        list-style-image: url("@/assets/img/list-marker.svg");
+      }
+    }
+  }
+
+  &_custom {
+    ul {
+      border: 1px solid #000;
+      padding: 15px 15px 15px 40px;
+
+      li {
+        padding-inline-start: 16px;
+        list-style-image: url("@/assets/img/list-marker.svg");
+      }
+    }
+  }
+}
