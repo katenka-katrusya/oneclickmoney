@@ -1,7 +1,7 @@
 import s from './styles.module.scss';
 import { Title } from '@/components/ui/title/Title.jsx';
 import { advantagesData } from '@/data/advantagesData.js';
-import { Button } from '@/components/ui/button/Button.jsx';
+import LinkFormat from '@/components/ui/linkFormat/LinkFormat.jsx';
 
 export const Advantages = () => {
   return (
@@ -18,7 +18,7 @@ export const Advantages = () => {
           ))}
         </ul>
         
-        <Button className={s.btn}>Получить займ</Button>
+        <LinkFormat className={s.btn}>Получить займ</LinkFormat>
       </div>
     </section>
   );

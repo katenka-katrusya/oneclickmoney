@@ -16,7 +16,14 @@ export const Accordion = ({ items, typeStyles }) => {
   return (
     <ul className={`${typeStyles === 'styles1' ? '' : s.accordion}`}>
       {items.map((item, id) => (
-        <AccordionItem key={id} onClick={clickHandler} item={item} id={id} isOpenId={isOpenId} typeStyles={typeStyles} />
+        <AccordionItem
+          key={id}
+          onClick={clickHandler}
+          item={item}
+          id={id}
+          isOpenId={isOpenId}
+          typeStyles={typeStyles}
+        />
       ))}
     </ul>
   );

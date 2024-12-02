@@ -1,18 +1,67 @@
 import s from './styles.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { updateSliderBackground } from '@/helpers/updateSliderBackgroun.js';
-import { Button } from '@/components/ui/button/Button.jsx';
+import LinkFormat from '@/components/ui/linkFormat/LinkFormat.jsx';
 
 export const Hero = () => {
   const sliderMoneyRef = useRef(null);
   const sliderDaysRef = useRef(null);
   
+  // для ползунков
   const [money, setMoney] = useState(30000); // сумма
   const [days, setDays] = useState(30); // количество дней
   
-  // const daysList = [15, 30, 45, 60, 75, 90, 105, 120];
+  // для инпутов
+  const [moneyInput, setMoneyInput] = useState(30000);
+  const [daysInput, setDaysInput] = useState(30);
+  
+  const roundValue = (value, step, min, max) => {
+    let rounded = Math.round(value / step) * step;
+    return Math.max(min, Math.min(max, rounded));
+  };
+  
+  const handleInputChange = (type) => (e) => {
+    const value = e.target.value;
+    
+    if (value === '') {
+      if (type === 'money') setMoneyInput('');
+      if (type === 'days') setDaysInput('');
+    } else {
+      if (type === 'money') setMoneyInput(value);
+      if (type === 'days') setDaysInput(value);
+    }
+  };
+  
+  const handleInputBlur = (type, step, min, max) => () => {
+    const value = type === 'money' ? moneyInput : daysInput;
+    
+    if (value === '') {
+      // если поле пусто, то минимальное значение
+      if (type === 'money') {
+        setMoney(500);
+        setMoneyInput(500);
+      }
+      if (type === 'days') {
+        setDays(15);
+        setDaysInput(15);
+      }
+    } else {
+      // округление значения и обновление состояния
+      const roundedValue = roundValue(value, step, min, max);
+      if (type === 'money') {
+        setMoney(roundedValue);
+        setMoneyInput(roundedValue);
+      }
+      if (type === 'days') {
+        setDays(roundedValue);
+        setDaysInput(roundedValue);
+      }
+    }
+  };
   
   useEffect(() => {
+    setMoneyInput(money);
+    setDaysInput(days);
     updateSliderBackground(sliderMoneyRef, money, 500, 100000);
     updateSliderBackground(sliderDaysRef, days, 15, 120);
   }, [money, days]);
@@ -79,8 +128,9 @@ export const Hero = () => {
                 <input
                   className={s.result__money}
                   type='number'
-                  value={money}
-                  readOnly
+                  value={moneyInput}
+                  onChange={handleInputChange('money')}
+                  onBlur={handleInputBlur('money', 500, 500, 100000)}
                 />
                 ₽
               </label>
@@ -89,14 +139,15 @@ export const Hero = () => {
                 <input
                   className={s.result__days}
                   type='number'
-                  value={days}
-                  readOnly
+                  value={daysInput}
+                  onChange={handleInputChange('days')}
+                  onBlur={handleInputBlur('days', 15, 15, 120)}
                 />
                 дней
               </label>
             </div>
             
-            <Button>Получить деньги</Button>
+            <LinkFormat>Получить деньги</LinkFormat>
           </div>
         </div>
       </div>

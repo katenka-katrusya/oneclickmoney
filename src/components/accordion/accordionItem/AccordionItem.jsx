@@ -1,15 +1,32 @@
 import s1 from './AccordionItem1.module.scss';
 import s2 from './AccordionItem2.module.scss';
 import { MarkdownContent } from '@/components/markdown/MarkdownContent.jsx';
+import { useRef } from 'react';
+import LinkFormat from '@/components/ui/linkFormat/LinkFormat.jsx';
 
 export const AccordionItem = ({ id, onClick, isOpenId, item, typeStyles }) => {
   const s = typeStyles === 'styles1' ? s1 : s2;
+  
+  const accordionHeaderRef = useRef(null);
+  
+  const handleAccordionClick = () => {
+    onClick(id);
+    
+    setTimeout(() => {
+      const elementTop = accordionHeaderRef.current.getBoundingClientRect().top;
+      window.scrollTo({
+        top: window.scrollY + elementTop - 30,
+        behavior: 'smooth',
+      });
+    }, 270);
+  };
   
   return (
     <li key={id} className={s.accordion__item}>
       <button
         className={s.accordion__item_header}
-        onClick={() => onClick(id)}
+        onClick={handleAccordionClick}
+        ref={accordionHeaderRef}
       >
         <span className={`${s.desc} ${isOpenId === id ? s.active : ''}`}>{item.question}</span>
         
@@ -26,14 +43,6 @@ export const AccordionItem = ({ id, onClick, isOpenId, item, typeStyles }) => {
         <MarkdownContent className={`${s.hidden}`} typeStyles={typeStyles}>
           {item.answer}
         </MarkdownContent>
-        
-        {typeStyles === 'styles2' && isOpenId === id &&
-          (
-            <button className={`${s.btn} ${isOpenId === id ? s.btn_open : ''}`}>
-              Оформить займ
-            </button>
-          )
-        }
       </div>
     </li>
   );
