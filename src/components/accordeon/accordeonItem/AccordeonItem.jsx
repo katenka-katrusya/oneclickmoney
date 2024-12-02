@@ -1,10 +1,9 @@
-import s1 from './AccordionItem1.module.scss';
-import s2 from './AccordionItem2.module.scss';
+import s1 from './AccordeonItem1.module.scss';
+import s2 from './AccordeonItem2.module.scss';
 import { MarkdownContent } from '@/components/markdown/MarkdownContent.jsx';
 import { useRef } from 'react';
-import LinkFormat from '@/components/ui/linkFormat/LinkFormat.jsx';
 
-export const AccordionItem = ({ id, onClick, isOpenId, item, typeStyles }) => {
+export const AccordeonItem = ({ id, onClick, isOpenId, item, typeStyles }) => {
   const s = typeStyles === 'styles1' ? s1 : s2;
   
   const accordionHeaderRef = useRef(null);

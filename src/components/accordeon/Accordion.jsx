@@ -1,6 +1,6 @@
 import s from './styles.module.scss';
 import { useState } from 'react';
-import { AccordionItem } from '@/components/accordion/accordionItem/AccordionItem.jsx';
+import { AccordeonItem } from '@/components/accordeon/accordeonItem/AccordeonItem.jsx';
 
 export const Accordion = ({ items, typeStyles }) => {
   const [isOpenId, setIsOpenId] = useState(null);
@@ -16,7 +16,7 @@ export const Accordion = ({ items, typeStyles }) => {
   return (
     <ul className={`${typeStyles === 'styles1' ? '' : s.accordion}`}>
       {items.map((item, id) => (
-        <AccordionItem
+        <AccordeonItem
           key={id}
           onClick={clickHandler}
           item={item}

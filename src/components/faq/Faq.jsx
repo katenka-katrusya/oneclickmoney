@@ -1,6 +1,6 @@
 import s from './styles.module.scss';
 import { Title } from '@/components/ui/title/Title.jsx';
-import { Accordion } from '@/components/accordion/Accordion.jsx';
+import { Accordion } from '@/components/accordeon/Accordion.jsx';
 import { faqItems2 } from '@/data/faqItems.json';
 import LinkFormat from '@/components/ui/linkFormat/LinkFormat.jsx';
 
